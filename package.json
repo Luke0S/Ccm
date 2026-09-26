@@ -1,0 +1,7 @@
+{
+  "name": "slate-credit-manager",
+  "private": true,
+  "scripts": {
+    "dev": "php -S localhost:4173"
+  }
+}
