@@ -10,7 +10,8 @@ CREATE TABLE cards (
   id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   user_id BIGINT UNSIGNED NOT NULL,
   name VARCHAR(80) NOT NULL,
-  network ENUM('Visa','Mastercard','American Express','Discover','Other') NOT NULL,
+  network ENUM('Visa','Mastercard','American Express','Discover','Diners Club','JCB','UnionPay','Other') NOT NULL,
+  issuer VARCHAR(50) NOT NULL DEFAULT 'Other',
   credit_limit DECIMAL(12,2) NOT NULL,
   due_day TINYINT UNSIGNED NOT NULL,
   statement_day TINYINT UNSIGNED NOT NULL,
@@ -39,4 +40,13 @@ CREATE TABLE transactions (
   CONSTRAINT transactions_amount_check CHECK (amount > 0),
   INDEX transactions_user_date (user_id, occurred_on),
   INDEX transactions_card_date (card_id, occurred_on)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE categories (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  user_id BIGINT UNSIGNED NOT NULL,
+  name VARCHAR(50) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY categories_user_name (user_id, name),
+  CONSTRAINT categories_user_fk FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
