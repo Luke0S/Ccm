@@ -1,7 +1,9 @@
 {
-  "name": "slate-credit-manager",
-  "private": true,
   "scripts": {
-    "dev": "php -S localhost:4173"
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite"
+  },
+  "devDependencies": {
+    "vite": "^6.1.0"
   }
 }

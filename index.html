@@ -1,1 +1,65 @@
-<!doctype html><html lang="en"><head><meta http-equiv="refresh" content="0; url=/login.html"><meta name="robots" content="noindex"><title>Credit Hub</title></head><body><p>Opening <a href="/login.html">Credit Hub</a>…</p></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slate — Credit manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#"><span class="brand-mark">S</span><span>slate</span></a>
+        <nav>
+          <button class="nav-item active" data-view="overview"><span>⌘</span>Overview</button>
+          <button class="nav-item" data-view="cards"><span>▣</span>My cards <b>3</b></button>
+          <button class="nav-item" data-view="activity"><span>↗</span>Activity</button>
+          <button class="nav-item" data-view="insights"><span>◔</span>Insights</button>
+        </nav>
+        <div class="sidebar-bottom">
+          <button class="nav-item"><span>⚙</span>Settings</button>
+          <div class="profile"><div class="avatar">AS</div><div><strong>Alex Smith</strong><small>Personal space</small></div><span>⌄</span></div>
+        </div>
+      </aside>
+
+      <section class="workspace">
+        <header class="topbar">
+          <div class="crumb"><span id="page-label">Overview</span><span class="chevron">/</span><span class="muted">September 2026</span></div>
+          <div class="header-actions"><button class="icon-button" aria-label="Notifications">♢<i></i></button><button class="help">?</button></div>
+        </header>
+
+        <div class="content" id="overview-view">
+          <div class="hero-row"><div><p class="eyebrow">GOOD MORNING, ALEX</p><h1>Your money, <em>in focus.</em></h1><p class="subcopy">A clear view of what you owe, what you've spent, and what's next.</p></div><button class="primary" id="open-card-modal">+ Add a card</button></div>
+
+          <section class="summary-grid">
+            <article class="metric-card primary-metric"><div class="metric-label">CURRENT CYCLE SPEND <button class="info">i</button></div><div class="amount">$2,846<span>.39</span></div><div class="cycle-row"><span class="cycle-dot"></span>Sep 04 — Oct 03 <strong>41% of total limit</strong></div><div class="meter"><span></span></div></article>
+            <article class="metric-card"><div class="metric-label">TOTAL AVAILABLE</div><div class="amount compact">$4,153<span>.61</span></div><div class="delta positive">↑ $326.00 <span>vs. last cycle</span></div><div class="soft-chart"><i style="height:18%"></i><i style="height:38%"></i><i style="height:30%"></i><i style="height:52%"></i><i style="height:34%"></i><i style="height:64%"></i><i style="height:43%"></i><i style="height:78%"></i><i style="height:58%"></i><i style="height:90%"></i></div></article>
+            <article class="metric-card"><div class="metric-label">NEXT PAYMENT</div><div class="amount compact">$1,200<span>.00</span></div><div class="pay-meta"><span><b>4</b> days</span><span>Oct 03 · Sapphire</span></div><button class="text-link">Plan payment →</button></article>
+          </section>
+
+          <section class="section-block card-stack-section"><div class="section-heading"><div><p class="eyebrow">YOUR WALLET</p><h2>Cards at a glance</h2></div><div class="stack-controls"><button id="previous-card">←</button><span id="card-count">01 <i>/</i> 03</span><button id="next-card">→</button></div></div>
+            <div class="wallet-layout"><div class="wallet-wrap"><div class="wallet" id="wallet"></div><p class="drag-note">↔ Drag cards to reorder your wallet</p></div><aside class="card-detail" id="card-detail"></aside></div>
+          </section>
+
+          <section class="bottom-grid">
+            <article class="panel spend-panel"><div class="panel-head"><div><p class="eyebrow">CYCLE SPENDING</p><h2>Where it went</h2></div><select id="month-select"><option>September 2026</option><option>August 2026</option><option>July 2026</option></select></div><div class="spend-body"><div class="donut" id="donut"><div><strong>$2,846</strong><small>this cycle</small></div></div><ul class="legend" id="category-legend"></ul></div></article>
+            <article class="panel activity-panel"><div class="panel-head"><div><p class="eyebrow">RECENT ACTIVITY</p><h2>Latest transactions</h2></div><button class="text-link">View all →</button></div><div id="transaction-list" class="transaction-list"></div></article>
+          </section>
+        </div>
+
+        <div class="content hidden" id="card-view">
+          <div class="hero-row"><div><p class="eyebrow">CARD DETAIL</p><h1 id="detail-title">Sapphire Reserve</h1><p class="subcopy">Track this cycle without losing sight of your running balance.</p></div><button class="primary" id="open-transaction-modal">+ Add transaction</button></div>
+          <section class="detail-hero"><div class="detail-balance"><p class="eyebrow">CURRENT BILLING CYCLE</p><div class="amount">$1,420<span>.12</span></div><p>New spending since Sep 04 <b>·</b> Closes in 7 days</p><div class="detail-meter"><span></span></div><div class="detail-scale"><span>$0</span><span>$3,500 cycle room</span></div></div><div class="previous-cycle"><p class="eyebrow">PREVIOUS CYCLE <span>lighter context</span></p><strong>$1,200.00</strong><p>Due Oct 03</p><button class="text-link">Plan payment →</button></div></section>
+          <section class="bottom-grid detail-grid"><article class="panel spend-panel"><div class="panel-head"><div><p class="eyebrow">THIS CYCLE</p><h2>Spending breakdown</h2></div><select><option>Sep 04 – Oct 03</option><option>Aug 04 – Sep 03</option></select></div><div class="spend-body"><div class="donut small"><div><strong>$1,420</strong><small>current</small></div></div><ul class="legend detail-legend"></ul></div></article><article class="panel activity-panel"><div class="panel-head"><div><p class="eyebrow">CARD ACTIVITY</p><h2>Transactions</h2></div><button class="text-link" id="edit-transaction">Edit list</button></div><div id="card-transaction-list" class="transaction-list"></div></article></section>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="card-modal"><form method="dialog" class="modal"><button class="modal-close" value="cancel">×</button><p class="eyebrow">NEW TO YOUR WALLET</p><h2>Add a credit card</h2><label>Card name<input id="new-card-name" required placeholder="e.g. Everyday Card" /></label><div class="form-row"><label>Card type<select id="new-card-type"><option>Visa</option><option>Mastercard</option><option>American Express</option></select></label><label>Credit limit<input id="new-card-limit" required type="number" placeholder="5000" /></label></div><label>Payment due day<input id="new-card-due" required type="number" min="1" max="31" placeholder="3" /></label><button class="primary wide" value="default">Add to wallet</button></form></dialog>
+    <dialog id="transaction-modal"><form method="dialog" class="modal"><button class="modal-close" value="cancel">×</button><p class="eyebrow">NEW TRANSACTION</p><h2>Log card spending</h2><label>Merchant<input id="transaction-merchant" required placeholder="e.g. Whole Foods" /></label><div class="form-row"><label>Amount<input id="transaction-amount" required type="number" step=".01" placeholder="0.00" /></label><label>Category<select id="transaction-category"><option>Groceries</option><option>Dining</option><option>Travel</option><option>Shopping</option><option>Other</option></select></label></div><label>Date<input id="transaction-date" type="date" value="2026-09-26" /></label><button class="primary wide" value="default">Add transaction</button></form></dialog>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
